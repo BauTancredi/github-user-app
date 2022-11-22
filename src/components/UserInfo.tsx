@@ -8,19 +8,19 @@ const UserInfo = ({ user }: UserInfoProps) => {
   return (
     <div className="container info mt-3">
       <div className="row">
-        <div className="col img text-center pt-5">
+        <div className="col-12 col-md-4 img text-center pt-5">
           <img
             src={user.avatar_url}
             alt="avatar"
             style={{ width: "60%", borderRadius: "50%" }}
           />
         </div>
-        <div className="col-8 p-3 pt-5">
+        <div className="col-12 col-md-8 p-3 pt-5">
           <div className="name d-flex justify-content-between align-items-center mb-2">
             <h3 className="name">The octocat</h3>
             <p className="bio">Joined 22 Jan 2011</p>
           </div>
-          <p className="username mb-4">@octocat</p>
+          <p className="username mb-4 mt-2">@octocat</p>
           <p className="bio">The user has no bio</p>
           <div className="stats d-flex justify-content-between p-3 my-4">
             <div className="repos">
@@ -38,7 +38,7 @@ const UserInfo = ({ user }: UserInfoProps) => {
           </div>
           <div className="container extra-info p-0">
             <div className="row">
-              <div className="col">
+              <div className="col-12 col-md-6">
                 <div className="location d-flex align-items-center mb-3">
                   <i className="bi-geo-alt-fill"></i>
                   <p className="location">Earth</p>
@@ -52,7 +52,7 @@ const UserInfo = ({ user }: UserInfoProps) => {
                   </p>
                 </div>
               </div>
-              <div className="col">
+              <div className="col-12 col-md-6">
                 <div className="twitter d-flex align-items-center mb-3">
                   <i className="bi-twitter"></i>
                   <p className="twitter">

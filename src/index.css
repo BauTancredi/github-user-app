@@ -93,6 +93,29 @@
   background-color: #141c2f;
 }
 
+@media (max-width: 767px) {
+  .App {
+    align-items: flex-start;
+  }
+
+  .name {
+    flex-direction: column;
+  }
+
+  .bio,
+  .username {
+    text-align: center;
+  }
+
+  .twitter,
+  .location,
+  .blog,
+  .company {
+    justify-content: center;
+    margin-bottom: 0.5rem !important;
+  }
+}
+
 #light h1 {
   color: white;
 }
