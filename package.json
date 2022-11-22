@@ -5,13 +5,13 @@
   "homepage": "https://bautancredi.github.io/github-user-app",
   "type": "module",
   "scripts": {
+    "predeploy": "tsc && vite build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "predeploy": "tsc && vite build",
-    "deploy": "gh-pages -d dist",
     "@tanstack/react-query": "^4.16.1",
     "gh-pages": "^4.0.0",
     "react": "^18.2.0",
