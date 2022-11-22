@@ -51,25 +51,23 @@ function App() {
           handleSubmit={handleSubmit}
         />
 
-        <div className="container info mt-3 p-2">
-          {isLoading ? (
-            <div className="d-flex justify-content-center mt-5">
-              <div
-                className="spinner-border text-primary"
-                role="status"
-                style={{ width: "3rem", height: "3rem" }}
-              >
-                <span className="visually-hidden">Loading...</span>
-              </div>
+        {isLoading ? (
+          <div className="d-flex justify-content-center mt-5">
+            <div
+              className="spinner-border text-primary"
+              role="status"
+              style={{ width: "3rem", height: "3rem" }}
+            >
+              <span className="visually-hidden">Loading...</span>
             </div>
-          ) : error ? (
-            <div className="d-flex justify-content-center">
-              <p className="text-danger">Something went wrong</p>
-            </div>
-          ) : user ? (
-            <UserInfo user={user} />
-          ) : null}
-        </div>
+          </div>
+        ) : error ? (
+          <div className="d-flex justify-content-center">
+            <p className="text-danger">Something went wrong</p>
+          </div>
+        ) : user ? (
+          <UserInfo user={user} />
+        ) : null}
       </div>
     </div>
   );
@@ -78,5 +76,4 @@ function App() {
 export default App;
 
 // Todo:
-// Style for error
 // Add a dark mode toggle
