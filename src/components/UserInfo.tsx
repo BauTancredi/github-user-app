@@ -5,6 +5,27 @@ type UserInfoProps = {
 };
 
 const UserInfo = ({ user }: UserInfoProps) => {
+  // format date
+  const date = new Date(user.created_at);
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const monthName = monthNames[date.getMonth()];
+  const formattedDate = `${date.getDate()} ${monthName} ${date.getFullYear()}`;
+
   return (
     <div className="container info mt-3">
       <div className="row">
@@ -17,53 +38,79 @@ const UserInfo = ({ user }: UserInfoProps) => {
         </div>
         <div className="col-12 col-md-8 p-3 pt-5">
           <div className="name d-flex justify-content-between align-items-center mb-2">
-            <h3 className="name">The octocat</h3>
-            <p className="bio">Joined 22 Jan 2011</p>
+            <h3 className="name">{user.name}</h3>
+            <p className="bio">Joined {formattedDate}</p>
           </div>
-          <p className="username mb-4 mt-2">@octocat</p>
-          <p className="bio">The user has no bio</p>
+          <p className="username mb-4 mt-2">@{user.login}</p>
+          <p className="bio">{user.bio ? user.bio : "The user has no bio"}</p>
           <div className="stats d-flex justify-content-between p-3 my-4">
             <div className="repos">
               <p className="stat">Repos</p>
-              <p className="stat-number">0</p>
+              <p className="stat-number">{user.public_repos}</p>
             </div>
             <div className="followers">
               <p className="stat">Followers</p>
-              <p className="stat-number">0</p>
+              <p className="stat-number">{user.followers}</p>
             </div>
             <div className="following">
               <p className="stat">Following</p>
-              <p className="stat-number">0</p>
+              <p className="stat-number">{user.following}</p>
             </div>
           </div>
           <div className="container extra-info p-0">
             <div className="row">
               <div className="col-12 col-md-6">
-                <div className="location d-flex align-items-center mb-3">
+                <div
+                  className={`location d-flex align-items-center mb-3 ${
+                    !user.location ? "disabled" : ""
+                  }`}
+                >
                   <i className="bi-geo-alt-fill"></i>
-                  <p className="location">Earth</p>
+                  <p className="location">
+                    {user.location ? user.location : "Not Available"}
+                  </p>
                 </div>
-                <div className="blog d-flex align-items-center">
+                <div
+                  className={`blog d-flex align-items-center ${
+                    !user.blog ? "disabled" : ""
+                  }`}
+                >
                   <i className="bi-link-45deg"></i>
                   <p className="blog">
-                    <a href="www.github.com" target="_blank">
-                      www.github.com
+                    <a href={`//${user.blog}`} target="_blank">
+                      {user.blog ? user.blog : "Not Available"}
                     </a>
                   </p>
                 </div>
               </div>
               <div className="col-12 col-md-6">
-                <div className="twitter d-flex align-items-center mb-3">
+                <div
+                  className={`twitter d-flex align-items-center mb-3 ${
+                    !user.twitter_username ? "disabled" : ""
+                  }`}
+                >
                   <i className="bi-twitter"></i>
                   <p className="twitter">
-                    <a href="www.twitter.com" target="_blank">
-                      @octocat
+                    <a
+                      href={`//www.twitter.com/${user.twitter_username}`}
+                      rel="noreferrer noopener"
+                      target="_blank"
+                    >
+                      {user.twitter_username
+                        ? `@${user.twitter_username}`
+                        : "Not Available"}
                     </a>
                   </p>
                 </div>
-                <div className="company d-flex align-items-center">
+                <div
+                  className={`company d-flex align-items-center ${
+                    !user.company ? "disabled" : ""
+                  }`}
+                >
                   <i className="bi-building"></i>
-                  <p className="company">GitHub</p>
+                  <p className="company">
+                    {user.company ? user.company : "Not Available"}
+                  </p>
                 </div>
               </div>
             </div>

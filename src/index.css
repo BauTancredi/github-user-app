@@ -116,6 +116,10 @@
   }
 }
 
+#light .extra-info .disabled * {
+  color: grey;
+}
+
 #light h1 {
   color: white;
 }

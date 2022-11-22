@@ -77,6 +77,5 @@ function App() {
 export default App;
 
 // Todo:
-// Add a dark mode toggle
-// Style for no data
 // Style for error
+// Add a dark mode toggle
