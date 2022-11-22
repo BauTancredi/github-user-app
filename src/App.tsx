@@ -1,9 +1,12 @@
 import { useState } from "react";
+import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
+import UserInfo from "./components/UserInfo";
 
 function App() {
   const [input, setInput] = useState("");
   const [user, setUser] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,38 +42,42 @@ function App() {
           flexDirection: "column",
         }}
       >
-        <div className="header d-flex align-items-center justify-content-between">
-          <h1 className="mb-0">devfinder</h1>
-          <p className="mb-0">Light</p>
+        <Header />
+
+        <SearchBar
+          input={input}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+
+        <div className="container mt-3">
+          {isLoading ? (
+            <div className="d-flex justify-content-center">
+              <div
+                className="spinner-border text-primary"
+                role="status"
+                style={{ width: "3rem", height: "3rem" }}
+              >
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          ) : error ? (
+            <div className="d-flex justify-content-center">
+              <p className="text-danger">Something went wrong</p>
+            </div>
+          ) : null}
         </div>
 
-        <div className="search-bar d-flex mt-4 bt-3 align-items-center">
-          <i
-            className="bi-search"
-            style={{ fontSize: "1.5rem", color: "#0d6efd", marginLeft: "10px" }}
-          ></i>
-          <form className="d-flex w-100" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Search Github username..."
-              className="form-control"
-              value={input}
-              onChange={handleChange}
-            />
-            <button
-              className="btn btn-primary ms-2"
-              type="submit"
-              style={{
-                borderRadius: "5px",
-              }}
-            >
-              Search
-            </button>
-          </form>
-        </div>
+        <UserInfo user={user} />
       </div>
     </div>
   );
 }
 
 export default App;
+
+// Todo:
+// Responsive
+// Add a dark mode toggle
+// Style for no data
+// Style for error
